@@ -4,7 +4,7 @@ resource "google_service_account" "cloudrun_deploy_bot" {
 }
 
 resource "google_project_iam_member" "cloudrun_deploy_bot_run_admin" {
-  role    = "roles/run.admin"
+  role    = "roles/run.developer"
   member  = "serviceAccount:${google_service_account.cloudrun_deploy_bot.email}"
   project = "fluid-brook-379710"
 }
@@ -22,7 +22,7 @@ resource "google_project_iam_member" "cloudrun_deploy_bot_sa_user" {
 }
 
 resource "google_project_iam_member" "cloudrun_deploy_bot_storage_admin" {
-  role    = "roles/storage.admin"
+  role    = "roles/storage.objectCreator"
   member  = "serviceAccount:${google_service_account.cloudrun_deploy_bot.email}"
   project = "fluid-brook-379710"
 }
