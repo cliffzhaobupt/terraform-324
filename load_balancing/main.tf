@@ -17,9 +17,9 @@ module "lb-http" {
   project = "fluid-brook-379710"
   name    = "cloudrun-next-app-load-balancing"
 
-  ssl                             = false
-  managed_ssl_certificate_domains = []
-  https_redirect                  = false
+  ssl                             = true
+  managed_ssl_certificate_domains = ["web-origin.cliffzhao.com"]
+  https_redirect                  = true
 
   backends = {
     default = {
