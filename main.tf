@@ -21,3 +21,8 @@ module "load_balancing" {
   source            = "./load_balancing"
   cloud_run_regions = ["asia-northeast1", "us-west1"]
 }
+
+module "cloud_dns" {
+  source         = "./cloud_dns"
+  lb_external_ip = module.load_balancing.lb_external_ip
+}
