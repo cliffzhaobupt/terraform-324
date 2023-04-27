@@ -8,6 +8,10 @@ provider "google" {
   zone    = "asia-east1-b"
 }
 
+provider "aws" {
+  region = "us-east-1"
+}
+
 module "workload_identity" {
   source = "./workload_identity"
 }
@@ -25,4 +29,8 @@ module "load_balancing" {
 module "cloud_dns" {
   source         = "./cloud_dns"
   lb_external_ip = module.load_balancing.lb_external_ip
+}
+
+module "cloud_front" {
+  source = "./cloud_front"
 }
