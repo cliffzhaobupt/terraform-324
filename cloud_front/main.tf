@@ -56,7 +56,7 @@ resource "aws_cloudfront_distribution" "cloudrun_next_app_distribution" {
 
     lambda_function_association {
       event_type = "viewer-request"
-      lambda_arn = "${var.cloudrun_next_app_viewer_request_lambda_edge_arn}:5"
+      lambda_arn = "${var.cloudrun_next_app_viewer_request_lambda_edge_arn}:6"
     }
   }
 
