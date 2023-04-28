@@ -23,6 +23,7 @@ resource "aws_cloudfront_cache_policy" "cloudrun_next_app_default_cache_policy" 
 }
 
 resource "aws_cloudfront_distribution" "cloudrun_next_app_distribution" {
+  aliases         = ["cloudrun-next-app-clouddns-to-cloudfront.cliffzhao.com"]
   comment         = "cloud run next app web distribution"
   enabled         = true
   is_ipv6_enabled = true
@@ -40,7 +41,9 @@ resource "aws_cloudfront_distribution" "cloudrun_next_app_distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn      = var.cloudrun_next_app_acm_certificate_arn
+    minimum_protocol_version = "TLSv1.2_2021"
+    ssl_support_method       = "sni-only"
   }
 
   default_cache_behavior {

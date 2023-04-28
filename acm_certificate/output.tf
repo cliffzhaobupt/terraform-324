@@ -1,0 +1,15 @@
+output "cloud_run_next_app_distribution_acm_certificate_arn" {
+  value = aws_acm_certificate.cloud_run_next_app_distribution_acm_certificate.arn
+}
+
+output "cloud_run_next_app_distribution_acm_certificate_dns_record_name" {
+  value = one(aws_acm_certificate.cloud_run_next_app_distribution_acm_certificate.domain_validation_options).resource_record_name
+}
+
+output "cloud_run_next_app_distribution_acm_certificate_dns_record_type" {
+  value = one(aws_acm_certificate.cloud_run_next_app_distribution_acm_certificate.domain_validation_options).resource_record_type
+}
+
+output "cloud_run_next_app_distribution_acm_certificate_dns_record_value" {
+  value = one(aws_acm_certificate.cloud_run_next_app_distribution_acm_certificate.domain_validation_options).resource_record_value
+}
