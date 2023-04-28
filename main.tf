@@ -39,6 +39,10 @@ module "cloud_dns" {
   cloud_run_next_app_distribution_acm_certificate_dns_record_value = module.acm_certificate.cloud_run_next_app_distribution_acm_certificate_dns_record_value
 }
 
+module "lambda_edge" {
+  source = "./lambda@edge"
+}
+
 module "cloud_front" {
   source                                = "./cloud_front"
   cloudrun_next_app_acm_certificate_arn = module.acm_certificate.cloud_run_next_app_distribution_acm_certificate_arn
