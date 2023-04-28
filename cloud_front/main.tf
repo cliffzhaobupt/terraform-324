@@ -12,7 +12,7 @@ resource "aws_cloudfront_cache_policy" "cloudrun_next_app_default_cache_policy" 
       header_behavior = "whitelist"
 
       headers {
-        items = ["Accept-Language", "Authorization", "RSC", "Next-Router-State-Tree", "Next-Router-Prefetch"]
+        items = ["RSC", "Next-Router-State-Tree", "Next-Router-Prefetch"]
       }
     }
 
@@ -53,6 +53,11 @@ resource "aws_cloudfront_distribution" "cloudrun_next_app_distribution" {
     target_origin_id       = "cloud-run-next-app-origin"
     cache_policy_id        = aws_cloudfront_cache_policy.cloudrun_next_app_default_cache_policy.id
     viewer_protocol_policy = "redirect-to-https"
+
+    lambda_function_association {
+      event_type = "viewer-request"
+      lambda_arn = "${var.cloudrun_next_app_viewer_request_lambda_edge_arn}:5"
+    }
   }
 
   restrictions {

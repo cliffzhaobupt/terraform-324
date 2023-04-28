@@ -44,6 +44,7 @@ module "lambda_edge" {
 }
 
 module "cloud_front" {
-  source                                = "./cloud_front"
-  cloudrun_next_app_acm_certificate_arn = module.acm_certificate.cloud_run_next_app_distribution_acm_certificate_arn
+  source                                           = "./cloud_front"
+  cloudrun_next_app_acm_certificate_arn            = module.acm_certificate.cloud_run_next_app_distribution_acm_certificate_arn
+  cloudrun_next_app_viewer_request_lambda_edge_arn = module.lambda_edge.viewer_request_lambda_edge_arn
 }

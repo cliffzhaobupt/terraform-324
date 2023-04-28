@@ -104,4 +104,6 @@ exports.handler = (event, context, callback) => {
     callback(null, redirectResponse);
     return;
   }
+
+  callback(null, request);
 };
