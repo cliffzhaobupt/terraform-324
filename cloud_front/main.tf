@@ -38,6 +38,11 @@ resource "aws_cloudfront_distribution" "cloudrun_next_app_distribution" {
       origin_protocol_policy = "https-only"
       origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
     }
+
+    custom_header {
+      name  = var.cloudrun_next_app_secret_header_name
+      value = var.cloudrun_next_app_secret_header_value
+    }
   }
 
   viewer_certificate {

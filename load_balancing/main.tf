@@ -29,7 +29,7 @@ module "lb-http" {
       enable_cdn              = false
       custom_request_headers  = null
       custom_response_headers = null
-      security_policy         = null
+      security_policy         = var.cloud_run_next_app_origin_security_policy_uri
       compression_mode        = null
 
       log_config = {
@@ -49,7 +49,6 @@ module "lb-http" {
         oauth2_client_id     = null
         oauth2_client_secret = null
       }
-
     }
   }
 }
